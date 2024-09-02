@@ -56,7 +56,7 @@ public class Calculadora extends javax.swing.JFrame {
         btnSec = new javax.swing.JButton();
         btnCosc = new javax.swing.JButton();
         btnPotencia = new javax.swing.JButton();
-        inputOperacion1 = new javax.swing.JLabel();
+        inputOperacion = new javax.swing.JLabel();
         inputResultado = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -71,8 +71,18 @@ public class Calculadora extends javax.swing.JFrame {
         btn1.setText("1");
 
         btn0.setText("0");
+        btn0.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn0MouseClicked(evt);
+            }
+        });
 
         btnC.setText("C");
+        btnC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCMouseClicked(evt);
+            }
+        });
 
         btn2.setText("2");
 
@@ -117,13 +127,11 @@ public class Calculadora extends javax.swing.JFrame {
 
         btnPotencia.setText("x^y");
 
-        inputOperacion1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        inputOperacion1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        inputOperacion1.setText("jLabel1");
+        inputOperacion.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        inputOperacion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
         inputResultado.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         inputResultado.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        inputResultado.setText("jLabel1");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -172,7 +180,7 @@ public class Calculadora extends javax.swing.JFrame {
                             .addComponent(btnSec)
                             .addComponent(btnCosc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnPotencia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(inputOperacion1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(inputOperacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(inputResultado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -180,7 +188,7 @@ public class Calculadora extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(inputOperacion1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(inputOperacion, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(inputResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
@@ -257,6 +265,17 @@ public class Calculadora extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCMouseClicked
+        // TODO add your handling code here:
+        inputOperacion.setText("");
+        inputResultado.setText("");
+    }//GEN-LAST:event_btnCMouseClicked
+
+    private void btn0MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn0MouseClicked
+        // TODO add your handling code here:
+        addNumber("0");
+    }//GEN-LAST:event_btn0MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -291,6 +310,10 @@ public class Calculadora extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void addNumber(String digito){
+        inputOperacion.setText(inputOperacion.getText()+digito);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn0;
@@ -319,7 +342,7 @@ public class Calculadora extends javax.swing.JFrame {
     private javax.swing.JButton btnSin;
     private javax.swing.JButton btnSuma;
     private javax.swing.JButton btnTan;
-    private javax.swing.JLabel inputOperacion1;
+    private javax.swing.JLabel inputOperacion;
     private javax.swing.JLabel inputResultado;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
